@@ -73,14 +73,14 @@ namespace Boolean
 
             */
 
-            if (haveCats || haveDogs)
-            {
-                Console.WriteLine("YOu have normal pets");
-            }
-            else if (havePets || haveIguana)
-            {
-                Console.WriteLine("You are unique");
-            }
+            //if (haveCats || haveDogs)
+            //{
+            //    Console.WriteLine("YOu have normal pets");
+            //}
+            //else if (havePets || haveIguana)
+            //{
+            //    Console.WriteLine("You are unique");
+            //}
 
 
             /*
@@ -89,12 +89,12 @@ namespace Boolean
             false if A true
             */
 
-            var x = 50;
+            //var x = 50;
 
-            if ( x != 100)
-            {
-                Console.WriteLine("Take a break!");
-            }
+            //if ( x != 100)
+            //{
+            //    Console.WriteLine("Take a break!");
+            //}
 
 
 
@@ -117,6 +117,23 @@ namespace Boolean
             //}
             //Console.WriteLine("The End;");
             */
+
+
+            // Switch Statements
+
+            var input = "red";
+
+            switch (input.ToLower())
+            {
+                case "green":
+                    Console.WriteLine("Got here there");
+                    break;
+                case "red":
+                    Console.WriteLine("Five gold rings");
+                    break;
+               
+            }
+
             Console.ReadLine();
         }
     }
