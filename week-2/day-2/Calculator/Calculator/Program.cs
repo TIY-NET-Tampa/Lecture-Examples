@@ -84,6 +84,7 @@ namespace Calculator
         {
             var input = int.Parse(Console.ReadLine());
             var card = new Card(input, 11);
+
             var r = card.Rank;
             card.Suit = 14;
             var num1 = GetNumber("Give me the first number");
