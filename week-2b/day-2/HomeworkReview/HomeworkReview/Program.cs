@@ -80,9 +80,27 @@ namespace HomeworkReview
         static void Main(string[] args)
         {
 
+            // Should be 5
+            // 5 / 20 = 0 R 5
             var x = 5 % 20;
+            // should be 4
+            // 4 / 24 = 0 R 4
             var y = 4 % 24;
             var z = 50 % 5;
+
+            //should be 2 
+            // 12 / 5 = 2 R 2
+            var r1 = 12 % 5;
+
+            // should be 1
+            // 11 / 10 = 1 R 1
+            var r2 = 11 % 10;
+
+            // should 1
+            // 31 / 10 = 3 R 1
+            var r3 = 31 % 10;
+
+
 
             var highSchool = new School { Students = 20, Teachers = 5 };
             var middleSchool = new School { Students = 10, Teachers = 2 };
