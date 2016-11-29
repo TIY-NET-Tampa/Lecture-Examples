@@ -8,7 +8,22 @@ namespace ToDoList.Services
 {
     public class Task
     {
+        public Task()
+        {
+            // default
+        }
+        public Task(string[] line)
+        {
+            this.Description = line[0];
+            this.TimeCreated = DateTime.Parse(line[1]);
+        }
+
         public string Description { get; set; }
         public DateTime TimeCreated { get; set; } = DateTime.Now;
+
+        public string ToCSVString()
+        {
+            return $"{Description}, {TimeCreated}";
+        }
     }
 }

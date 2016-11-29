@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ToDoList.Services
+namespace CtorFun
 {
-    public enum Actions
+    class Child : Parent
     {
-        NoAction = 0, 
-        Add, 
-        Delete, 
-        SaveAndExit
+        public Child():base(13)
+        {
+
+        }
     }
 }

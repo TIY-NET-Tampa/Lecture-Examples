@@ -52,6 +52,7 @@ namespace ToDoListSolution
         public static UserAction GetUserAction()
         {
             Console.WriteLine("Type a task to add it or enter the number to complete the task:");
+            Console.WriteLine("Type 'save' to save and exit");
             var input = Console.ReadLine();
             var num = 0;
             var isNumber = int.TryParse(input, out num);
@@ -64,9 +65,17 @@ namespace ToDoListSolution
             }
             else
             {
-                // we are adding
-                rv.TaskToAdd = input;
-                rv.ActionToTake = Actions.Add;
+                if (String.Compare(input, "save", true) == 0)
+                {
+                    rv.ActionToTake = Actions.SaveAndExit;
+                }
+                else
+                {
+                    // we are adding
+                    rv.TaskToAdd = input;
+                    rv.ActionToTake = Actions.Add;
+                }
+
             }
             return rv;
         }
@@ -74,8 +83,11 @@ namespace ToDoListSolution
         static void Main(string[] args)
         {
             var error = new ErrorMessage();
-            while (true)
+            var working = true;
+            MyList.LoadFromFile();
+            while (working)
             {
+                Console.Clear();
                 if (error.ShouldDisplay)
                 {
                     Console.WriteLine(error.Message);
@@ -86,23 +98,28 @@ namespace ToDoListSolution
                 DisplayList("Completed Tasks", MyList.CompletedTasks, "************");
                 // Ask the user what to do (add)
                 var userAction = GetUserAction();
-                if (userAction.ActionToTake == Actions.Delete)
+                switch (userAction.ActionToTake)
                 {
-                    // we are removing
-                    error.ShouldDisplay =  MyList.RemoveItemFromList(userAction.NumberToDelete);
-                   if (error.ShouldDisplay)
-                    {
-                        error.Message = "Item does not exists, try again";
-                    }
+                    case (Actions.Delete):
+                        // we are removing
+                        error.ShouldDisplay = MyList.RemoveItemFromList(userAction.NumberToDelete);
+                        if (error.ShouldDisplay)
+                        {
+                            error.Message = "Item does not exists, try again";
+                        }
+                        break;
+                    case (Actions.Add):
+                        // we are adding
+                        MyList.AddItemToList(userAction.TaskToAdd);
+                        break;
+                    case (Actions.SaveAndExit):
+                        Console.WriteLine("Saving....");
+                        MyList.SaveList();
+                        working = false;
+                        break;
                 }
-                else
-                {
-                    // we are adding
-                    MyList.AddItemToList(userAction.TaskToAdd);
-                }
-
-                Console.Clear();
             }
+            Console.ReadLine();
         }
 
     }

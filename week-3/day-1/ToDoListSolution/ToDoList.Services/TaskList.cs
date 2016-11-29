@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 namespace ToDoList.Services
@@ -8,6 +9,8 @@ namespace ToDoList.Services
     {
         public List<Task> Tasking { get; set; } = new List<Task>();
         public List<Task> CompletedTasks { get; set; } = new List<Task>();
+
+        private string filePath = "tasks.csv";
 
         public void AddItemToList(string newTask)
         {
@@ -29,7 +32,37 @@ namespace ToDoList.Services
                 Tasking.RemoveAt(itemToRemove);
             }
             return wasRemoved;
-            
+
         }
+
+        public void SaveList()
+        {
+            using (var sw = new StreamWriter(filePath))
+            {
+                foreach (var task in Tasking)
+                {
+                    sw.WriteLine(task.ToCSVString());
+                }
+            }
+        }
+
+        public void LoadFromFile()
+        {
+            Tasking.Clear();
+            if (File.Exists(filePath))
+            {
+                using (var sr = new StreamReader(filePath))
+                {
+                    while (sr.Peek() > 0)
+                    {
+                        var line = sr.ReadLine().Split(',');
+                        var newTask = new Task(line);
+                        Tasking.Add(newTask);
+                    }
+                }
+            } 
+
+        }
+
     }
 }

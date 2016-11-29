@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ToDoList.Services
+namespace ClassLibrary1
 {
-    public enum Actions
+    public class Class1
     {
-        NoAction = 0, 
-        Add, 
-        Delete, 
-        SaveAndExit
     }
 }
