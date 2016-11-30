@@ -1,0 +1,16 @@
+﻿<Window x:Class="HelloWorld_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HelloWorld_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="215" Width="283">
+    <Grid>
+        
+        <Label x:Name="OtherLabel" Content="Hello From XAML" HorizontalAlignment="Left" Margin="26,68,0,0" VerticalAlignment="Top" Height="54" Width="222" FontWeight="Bold" FontSize="24" Grid.ColumnSpan="2"/>
+        
+        <Button x:Name="button" Content="click Me" Width="74" Click="button_Click" Margin="92,112,112,23.5"/>
+
+    </Grid>
+</Window>

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoListConsole", "ToDoList
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Services", "ToDoList.Services\ToDoList.Services.csproj", "{5C806BEB-25BF-41E9-BD39-DBB585E88571}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Desktop", "ToDoList.Desktop\ToDoList.Desktop.csproj", "{16EA0006-5BE1-466B-B2D4-93531F059EE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5C806BEB-25BF-41E9-BD39-DBB585E88571}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C806BEB-25BF-41E9-BD39-DBB585E88571}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C806BEB-25BF-41E9-BD39-DBB585E88571}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16EA0006-5BE1-466B-B2D4-93531F059EE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16EA0006-5BE1-466B-B2D4-93531F059EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16EA0006-5BE1-466B-B2D4-93531F059EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16EA0006-5BE1-466B-B2D4-93531F059EE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

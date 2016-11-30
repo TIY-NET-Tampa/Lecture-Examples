@@ -17,6 +17,16 @@ namespace ToDoList.Services
             Tasking.Add(new Task { Description = newTask });
         }
 
+        public bool RemoveItemFromList(Task task)
+        {
+            var itemToRemove = Tasking.FirstOrDefault(f => f.Id == task.Id);
+            if (itemToRemove != null)
+            {
+                Tasking.Remove(itemToRemove);
+            }
+            return true;
+        }
+
         public bool RemoveItemFromList(int itemToRemove)
         {
             var wasRemoved = true;
@@ -46,6 +56,7 @@ namespace ToDoList.Services
             }
         }
 
+     
         public void LoadFromFile()
         {
             Tasking.Clear();
