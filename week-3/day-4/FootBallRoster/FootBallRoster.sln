@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootBallRoster", "FootBallRoster\FootBallRoster.csproj", "{60AFAC44-D9BF-4D9B-9AB6-1C346E5A6856}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Football.Services", "Football.Services\Football.Services.csproj", "{F0608C67-96CD-44A4-BDCB-2894EE7BD8D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60AFAC44-D9BF-4D9B-9AB6-1C346E5A6856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60AFAC44-D9BF-4D9B-9AB6-1C346E5A6856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60AFAC44-D9BF-4D9B-9AB6-1C346E5A6856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60AFAC44-D9BF-4D9B-9AB6-1C346E5A6856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0608C67-96CD-44A4-BDCB-2894EE7BD8D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0608C67-96CD-44A4-BDCB-2894EE7BD8D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0608C67-96CD-44A4-BDCB-2894EE7BD8D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0608C67-96CD-44A4-BDCB-2894EE7BD8D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
