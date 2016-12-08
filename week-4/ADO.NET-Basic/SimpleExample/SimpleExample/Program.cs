@@ -22,7 +22,7 @@ namespace SimpleExample
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    var id = reader[0];
+                    var id = reader["Id"];
                     var cityName = reader[1];
                     var state = reader[2];
                     var population = reader[3];
