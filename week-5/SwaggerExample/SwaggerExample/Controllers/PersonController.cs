@@ -4,14 +4,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using PeopleApi.Models; // Need to refernce the models
-using PeopleApi.Services;
+using SwaggerExample.Models;
+using SwaggerExample.Services;
 
-namespace PeopleApi.Controllers
+namespace SwaggerExample.Controllers
 {
     public class PersonController : ApiController
     {
-
         //GET all the people
         [HttpGet]
         public IHttpActionResult GetPeople()
