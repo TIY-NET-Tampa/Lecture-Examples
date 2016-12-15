@@ -1,0 +1,86 @@
+﻿@model RazorExploration.ViewModels.DashboardViewModel
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="jumbotron">
+            <div class="containers">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <h3>TIY Sports!</h3>
+                        <p>Go sports!</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <img src="~/Content/Image/baseball.jpg" class="img-circle img-responsive" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    Sports cards go here
+</div>
+<div class="row">
+    Alerts
+</div>
+<div class="row">
+    facebook
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <i class="glyphicon glyphicon-chevron-right"></i>Team
+                <span class="pull-right"><span class="badge">@Model.CountOfTotalTeams</span> Total Teams </span>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                @foreach (var team in Model.Teams)
+                {
+                    <tr>
+                        <td class="col-xs-1">
+                            <img src="@team.ImageUrl" class="img-circle img-responsive" />
+                        </td>
+                        <td class="col-xs-10">
+                            @team.Name
+                        </td>
+                        <td class="col-xs-2">
+                            @if (team.PlayerCount == 0)
+                            {
+                                <span class="badge bg-danger">No Players</span> 
+                            }
+                            <a href="#"><span class="badge">@team.PlayerCount Players</span>  </a>
+                        </td>
+                    </tr>
+                }
+                
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><i class="glyphicon glyphicon-chevron-right"></i>Team</div>
+            <div class="panel-body">
+                <table class="table">
+                    @foreach (var game in Model.Games)
+                    {
+                        <tr>
+                            <td class="col-xs-1">
+                                @game.Id
+                            </td>
+                            <td class="col-xs-4">@game.HomeTeamName</td>
+                            <td class="col-xs-4">@game.AwayTeamName</td>
+                            <td class="col-xs-2">@game.HomeScore <span>-</span> @game.AwayScore</td>
+
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
