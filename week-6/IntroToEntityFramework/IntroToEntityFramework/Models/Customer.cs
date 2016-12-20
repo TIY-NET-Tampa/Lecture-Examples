@@ -15,10 +15,21 @@ namespace IntroToEntityFramework.Models
 
         public int? RewardPoints { get; set; }
 
+        public string Email { get; set; }
+
+        public int? AddressId { get; set; }
+        public virtual Address Address { get; set; }
+
+        public virtual ICollection<Movies> Movies { get; set; } = new HashSet<Movies>();
 
         public override string ToString()
         {
-            return $"{Id}, {Name}, {YearJoined}, {IsActive}";
+            var rv = $"{Id}, {Name}, {YearJoined}, {IsActive}";
+            if (this.Address != null)
+            {
+                rv += $" and they live at {this.Address.AddressLine}";
+            }
+            return rv;
         }
     }
 }

@@ -53,7 +53,7 @@ namespace IntroToEntityFramework
             db.Customers.Add(newCustomer);
 
             db.SaveChanges();
-    
+
             var allCustomers = db.Customers.ToList();
 
             PrintCollection("All cusotmers", allCustomers);
@@ -68,7 +68,7 @@ namespace IntroToEntityFramework
 
             PrintCollection("All cusotmers -- updated", allCustomers2);
 
-
+            // Deleting
             var toDelete = db.Customers.Where(f => f.Name == "Hoss");
             db.Customers.RemoveRange(toDelete);
             db.SaveChanges();
@@ -78,6 +78,45 @@ namespace IntroToEntityFramework
 
             PrintCollection("All cusotmers -- deleted", allCustomers3);
 
+
+            var customer = db.Customers.First(f => f.Id == 1);
+
+            customer.Address = new Address
+            {
+                AddressLine = "123 Fake",
+                City = "NowwhereVille",
+                State = " HA",
+                Zip = "12345"
+            };
+
+            db.SaveChanges();
+
+
+            /*
+             SELECT Id, Name
+             FROM CUSTOMERS
+             WHERE IsActive = 1
+             */
+
+            var noJoin = db.Customers
+                .Where(w => w.IsActive)
+                .Select(s => new { s.Id, s.Name, s.IsActive });
+
+
+            // Many to Many relationships
+
+            var movie = new Movies
+            {
+                Name = "Back to the Future"
+            };
+            // db.Movies.Add(movie);
+           // movie.Customers.Add(cus1);
+
+            var cus1 = db.Customers.First(f => f.Id == 2);
+            cus1.Movies.Add(movie);
+            db.SaveChanges();
+            
+            
 
             Console.ReadLine();
 

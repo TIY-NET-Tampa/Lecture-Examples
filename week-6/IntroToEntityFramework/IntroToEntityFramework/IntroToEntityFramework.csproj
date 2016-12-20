@@ -60,14 +60,28 @@
     <Compile Include="Migrations\201612191610067_RewardsProgram.Designer.cs">
       <DependentUpon>201612191610067_RewardsProgram.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612201541390_Add-Email.cs" />
+    <Compile Include="Migrations\201612201541390_Add-Email.Designer.cs">
+      <DependentUpon>201612201541390_Add-Email.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612201613390_Adding-Address.cs" />
+    <Compile Include="Migrations\201612201613390_Adding-Address.Designer.cs">
+      <DependentUpon>201612201613390_Adding-Address.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612201650270_AddedMovies.cs" />
+    <Compile Include="Migrations\201612201650270_AddedMovies.Designer.cs">
+      <DependentUpon>201612201650270_AddedMovies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Movies.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentalContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Compile Include="Models\Address.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +90,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612191610067_RewardsProgram.resx">
       <DependentUpon>201612191610067_RewardsProgram.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612201541390_Add-Email.resx">
+      <DependentUpon>201612201541390_Add-Email.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612201613390_Adding-Address.resx">
+      <DependentUpon>201612201613390_Adding-Address.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612201650270_AddedMovies.resx">
+      <DependentUpon>201612201650270_AddedMovies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
