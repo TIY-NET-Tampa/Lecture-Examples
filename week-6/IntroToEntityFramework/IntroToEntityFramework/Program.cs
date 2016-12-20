@@ -9,7 +9,7 @@ namespace IntroToEntityFramework
 {
     class Program
     {
-
+        // Print Out a collection
         public static void PrintCollection(string heading, IEnumerable<Customer> list)
         {
             Console.WriteLine(heading);
@@ -31,17 +31,19 @@ namespace IntroToEntityFramework
             // Reading
             PrintCollection("All Customers", customers);
 
+            // SELECT * FROM Customers WHERE IsActive = True
             var activeCustomer = db.Customers.Where(w => w.IsActive);
 
             PrintCollection("Active Cusomters", activeCustomer);
 
+            // SELECT * FROM Customers WHERE YearJoined < 1900 AND IsActive = True
             var longTimeCustomer = db.Customers.Where(w => w.YearJoined < 1900 && w.IsActive);
 
             PrintCollection("Long time customers", longTimeCustomer);
 
 
             // Creating
-
+            // Create a new instance of a Model
             var newCustomer = new Customer
             {
                 Name = "Hoss",
@@ -49,19 +51,26 @@ namespace IntroToEntityFramework
                 YearJoined = 1988,
                 RewardPoints = 1000
             };
-
+            // Add the new instance to the context
             db.Customers.Add(newCustomer);
 
+            // save the changes to the database
             db.SaveChanges();
-
+            
             var allCustomers = db.Customers.ToList();
 
             PrintCollection("All cusotmers", allCustomers);
 
-            //Updating 
+            //Updating
+            
+            // bring the item you want to update into Context 
             var itemToUpdate = db.Customers.First(f => f.Name == "Irwin");
+
+            // update any fields
             itemToUpdate.IsActive = false;
             itemToUpdate.RewardPoints += 100;
+
+            // Commit change to the db
             db.SaveChanges();
 
             var allCustomers2 = db.Customers.ToList();
@@ -69,8 +78,11 @@ namespace IntroToEntityFramework
             PrintCollection("All cusotmers -- updated", allCustomers2);
 
             // Deleting
+            // bring items into context that you want to delete
             var toDelete = db.Customers.Where(f => f.Name == "Hoss");
+            // Remove them
             db.Customers.RemoveRange(toDelete);
+            // Commit changes to the DB
             db.SaveChanges();
 
 
@@ -79,8 +91,11 @@ namespace IntroToEntityFramework
             PrintCollection("All cusotmers -- deleted", allCustomers3);
 
 
+            // Adding a foreign Key
+            // bring the customer into context
             var customer = db.Customers.First(f => f.Id == 1);
 
+            // create a new Address, this will also bring into context
             customer.Address = new Address
             {
                 AddressLine = "123 Fake",
@@ -89,6 +104,7 @@ namespace IntroToEntityFramework
                 Zip = "12345"
             };
 
+            // commit changes, and add address to the database
             db.SaveChanges();
 
 
@@ -105,18 +121,23 @@ namespace IntroToEntityFramework
 
             // Many to Many relationships
 
+            // adding a new movie to a customer
             var movie = new Movies
             {
                 Name = "Back to the Future"
             };
-            // db.Movies.Add(movie);
-           // movie.Customers.Add(cus1);
-
+            
             var cus1 = db.Customers.First(f => f.Id == 2);
             cus1.Movies.Add(movie);
             db.SaveChanges();
-            
-            
+
+
+            // Add a customer to a new movie
+            var movie2 = new Movies { Name = "Jurassic Park" };
+            db.Movies.Add(movie2);
+
+            movie2.Customers.Add(cus1);
+            db.SaveChanges();
 
             Console.ReadLine();
 
