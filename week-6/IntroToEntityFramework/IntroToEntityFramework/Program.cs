@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IntroToEntityFramework.Models;
+using System.Data.Entity;
 
 namespace IntroToEntityFramework
 {
@@ -22,7 +23,7 @@ namespace IntroToEntityFramework
         static void Main(string[] args)
         {
             var db = new RentalContext();
-
+            
             // SELECT * FROM Customers
             var customers = db.Customers.ToList();
             var notYet = db.Customers;
@@ -63,15 +64,15 @@ namespace IntroToEntityFramework
 
             //Updating
             
-            // bring the item you want to update into Context 
-            var itemToUpdate = db.Customers.First(f => f.Name == "Irwin");
+            //// bring the item you want to update into Context 
+            //var itemToUpdate = db.Customers.First(f => f.Name == "Irwin");
 
-            // update any fields
-            itemToUpdate.IsActive = false;
-            itemToUpdate.RewardPoints += 100;
+            //// update any fields
+            //itemToUpdate.IsActive = false;
+            //itemToUpdate.RewardPoints += 100;
 
-            // Commit change to the db
-            db.SaveChanges();
+            //// Commit change to the db
+            //db.SaveChanges();
 
             var allCustomers2 = db.Customers.ToList();
 
@@ -93,7 +94,7 @@ namespace IntroToEntityFramework
 
             // Adding a foreign Key
             // bring the customer into context
-            var customer = db.Customers.First(f => f.Id == 1);
+            var customer = db.Customers.First(f => f.Name == "Billy");
 
             // create a new Address, this will also bring into context
             customer.Address = new Address
@@ -121,23 +122,65 @@ namespace IntroToEntityFramework
 
             // Many to Many relationships
 
-            // adding a new movie to a customer
-            var movie = new Movies
-            {
-                Name = "Back to the Future"
-            };
-            
-            var cus1 = db.Customers.First(f => f.Id == 2);
-            cus1.Movies.Add(movie);
-            db.SaveChanges();
+            //// adding a new movie to a customer
+            //var movie = new Movies
+            //{
+            //    Name = "Back to the Future"
+            //};
+
+            //var cus1 = db.Customers.First(f => f.Id == 2);
+            //cus1.Movies.Add(movie);
+            //db.SaveChanges();
 
 
-            // Add a customer to a new movie
-            var movie2 = new Movies { Name = "Jurassic Park" };
-            db.Movies.Add(movie2);
+            //// Add a customer to a new movie
+            //var movie2 = new Movies { Name = "Jurassic Park" };
+            //db.Movies.Add(movie2);
 
-            movie2.Customers.Add(cus1);
-            db.SaveChanges();
+            //movie2.Customers.Add(cus1);
+            //db.SaveChanges();
+
+
+            // SELECT *
+            // FROM Customers
+            // LEFT JOIN Addresses ON Customers.AddressId = Address.Id
+            // WHERE Customer.Name = 'Billy'
+
+            var bill = db.Customers.First(f => f.Name == "Billy");
+
+            var billy = db.Customers.Include(i => i.Address).First(w => w.Name == "Billy");
+
+            var billyJoined = db.Customers // Left table
+                                .Join(db.Addresses, // right table
+                                fk => fk.AddressId, // Foreign Key
+                                pk => pk.Id, // Primary Key
+                                (c, address) => new { Person = c, Where = address }) // result
+                                .First(w => w.Person.Name == "Billy"); // Where statement
+   
+
+            // list the discint cities  from aquairum table
+            var dis = db.Addresses.Select(s => s.State).Distinct();
+
+
+
+            // SELECT *
+            // FROM Customers
+            // LEFT JOIN Addresses ON Customers.AddressId = AddressId
+            // WHERE Address.State = 'HA'
+
+            var haCustomers = db.Customers
+                                  .Join(db.Addresses,
+                                  fk => fk.AddressId,
+                                  pk => pk.Id,
+                                  (c, a) => new { Person = c, Where = a })
+                                  .First();
+            haCustomers.Person.Name = "";
+                                  
+                                  
+
+
+
+
 
             Console.ReadLine();
 
