@@ -199,6 +199,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TaskItems1Controller.cs" />
+    <Compile Include="Controllers\TaskItems2Controller.cs" />
     <Compile Include="Controllers\TaskItemsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -299,6 +301,16 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\TaskItems\Index.cshtml" />
+    <Content Include="Views\TaskItems1\Create.cshtml" />
+    <Content Include="Views\TaskItems1\Delete.cshtml" />
+    <Content Include="Views\TaskItems1\Details.cshtml" />
+    <Content Include="Views\TaskItems1\Edit.cshtml" />
+    <Content Include="Views\TaskItems1\Index.cshtml" />
+    <Content Include="Views\TaskItems2\Create.cshtml" />
+    <Content Include="Views\TaskItems2\Delete.cshtml" />
+    <Content Include="Views\TaskItems2\Details.cshtml" />
+    <Content Include="Views\TaskItems2\Edit.cshtml" />
+    <Content Include="Views\TaskItems2\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
