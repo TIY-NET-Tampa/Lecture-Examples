@@ -6,30 +6,80 @@
 
 <h2>@ViewBag.Title</h2>
 
-    @if (User.Identity.IsAuthenticated)
-    {
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
-    }
+@if (User.Identity.IsAuthenticated)
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
 
 
 
-    @foreach (var item in Model)
-    {
-        <div class="row">
-            <div class="col-xs-2">
-                @{
-                    var count = item.Upvotes - item.Downvotes;
-                }
-                <div>@count</div>
-            </div>
-            <div class="col-xs-10">
-                @Html.DisplayFor(modelItem => item.Title)
-                @Html.DisplayFor(modelItem => item.Body)
-                @Html.DisplayFor(modelItem => item.Poster.Email)
+@foreach (var item in Model)
+{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-2">
+                    @{
+                        var count = item.Upvotes - item.Downvotes;
+                    }
+                    <div><button class="button-for-@item.Id" onclick="voteClick('@item.Id', '1')"><i class="glyphicon glyphicon-chevron-up"></i></button></div>
+                    <div>@count</div>
+                    <div><button class="button-for-@item.Id" onclick="voteClick('@item.Id', '-1')"><i class="glyphicon glyphicon-chevron-down"></i></button></div>
+
+                </div>
+                <div class="col-xs-10">
+                    <div>
+                        <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+                    </div>
+                    <div>
+                        @Html.DisplayFor(modelItem => item.Body)
+                    </div>
+                    <div>
+                        <h6> @Html.DisplayFor(modelItem => item.Poster.Email)</h6>
+                    </div>
 
 
+                </div>
             </div>
         </div>
-                    }
+    </div>
+
+                        }
+
+
+@section scripts{
+    <script>
+        var disabledButtonsOnPost = function (postId) {
+            var btnsToDisable = ".button-for-" + postId;
+            $(btnsToDisable).attr("disabled", "disabled");
+        }
+        var updateCounter = function (newCount, item) {
+        }
+        var voteClick = function (id, value) {
+            console.log("Voting:" + value + "for" + id);
+            // ajax call
+            var json = {
+                PostId: id,
+                Vote: value
+            }
+            var route = "/api/vote/".concat(id, (value == 1) ? "up" : "down");
+            $.ajax({
+                type: 'POST',
+                url: route,
+                data: JSON.stringify(json),
+                success: function (data) {
+                    // disable the upvote button for this item
+                    var newCount = data.NewCount;
+                    disabledButtonsOnPost(id);
+                    updateCounter(newCount, item);
+                },
+                contentType: "application/json",
+                dataType: 'json'
+            });
+        }
+
+
+    </script>
+}

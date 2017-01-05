@@ -58,11 +58,11 @@ namespace RedditClone2
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "1028324475488-vb996afr6q4mc5j5j9j07am8c7uvae3s.apps.googleusercontent.com",
+                ClientSecret = "-v48oPKQR8BqArf7dvAK2AFK"
+            });
         }
     }
 }
