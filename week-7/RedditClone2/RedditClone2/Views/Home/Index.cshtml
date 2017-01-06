@@ -25,7 +25,7 @@
                     @{
                         var count = item.Upvotes - item.Downvotes;
                     }
-                    <div><button class="button-for-@item.Id" onclick="voteClick('@item.Id', '1')" @(User.Identity.IsAuthenticated ? "":"disabled='disabled'")><i class="glyphicon glyphicon-chevron-up"></i></button></div>
+                    <div><button class="button-for-@item.Id" onclick="voteClick('@item.Id', '1')" ><i class="glyphicon glyphicon-chevron-up"></i></button></div>
                     <div id="countFor-@item.Id">@count</div>
                     <div><button class="button-for-@item.Id" onclick="voteClick('@item.Id', '-1')" @(User.Identity.IsAuthenticated ? "":"disabled='disabled'")><i class="glyphicon glyphicon-chevron-down"></i></button></div>
 
@@ -68,11 +68,15 @@
                 Vote: value
             }
             var route = "/api/vote/".concat(id, "/", (value == 1) ? "up" : "down");
+           // var r = "/api/vote" + id + "/" + (value == 1) ? "up" : "down";
             $.ajax({
                 type: 'POST',
                 url: route,
                 data: JSON.stringify(json),
                 success: function (data) {
+                    if (data.Message) {
+                        alert(data.Message);
+                    }
                     // disable the upvote button for this item
                     var newCount = data.NewCount;
                     disabledButtonsOnPost(id);

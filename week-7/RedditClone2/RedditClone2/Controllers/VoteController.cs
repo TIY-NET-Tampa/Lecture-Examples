@@ -22,7 +22,7 @@ namespace RedditClone2.Controllers
             {
                 post.Upvotes++;
                 db.SaveChanges();
-                return Ok(new VoteResponseViewModel { NewCount = post.Upvotes - post.Downvotes});
+                return Ok(new { NewCount = post.Upvotes - post.Downvotes});
             }
             return NotFound();
         }
