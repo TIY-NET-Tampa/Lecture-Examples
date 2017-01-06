@@ -20,13 +20,14 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
+
                 <div class="col-xs-2">
                     @{
                         var count = item.Upvotes - item.Downvotes;
                     }
-                    <div><button class="button-for-@item.Id" onclick="voteClick('@item.Id', '1')"><i class="glyphicon glyphicon-chevron-up"></i></button></div>
-                    <div>@count</div>
-                    <div><button class="button-for-@item.Id" onclick="voteClick('@item.Id', '-1')"><i class="glyphicon glyphicon-chevron-down"></i></button></div>
+                    <div><button class="button-for-@item.Id" onclick="voteClick('@item.Id', '1')" @(User.Identity.IsAuthenticated ? "":"disabled='disabled'")><i class="glyphicon glyphicon-chevron-up"></i></button></div>
+                    <div id="countFor-@item.Id">@count</div>
+                    <div><button class="button-for-@item.Id" onclick="voteClick('@item.Id', '-1')" @(User.Identity.IsAuthenticated ? "":"disabled='disabled'")><i class="glyphicon glyphicon-chevron-down"></i></button></div>
 
                 </div>
                 <div class="col-xs-10">
@@ -55,7 +56,9 @@
             var btnsToDisable = ".button-for-" + postId;
             $(btnsToDisable).attr("disabled", "disabled");
         }
-        var updateCounter = function (newCount, item) {
+        var updateCounter = function (newCount, id) {
+            var itemToUpdate = "#countFor-" + id;
+            $(itemToUpdate).html(newCount);
         }
         var voteClick = function (id, value) {
             console.log("Voting:" + value + "for" + id);
@@ -64,7 +67,7 @@
                 PostId: id,
                 Vote: value
             }
-            var route = "/api/vote/".concat(id, (value == 1) ? "up" : "down");
+            var route = "/api/vote/".concat(id, "/", (value == 1) ? "up" : "down");
             $.ajax({
                 type: 'POST',
                 url: route,
@@ -73,7 +76,7 @@
                     // disable the upvote button for this item
                     var newCount = data.NewCount;
                     disabledButtonsOnPost(id);
-                    updateCounter(newCount, item);
+                    updateCounter(newCount, id);
                 },
                 contentType: "application/json",
                 dataType: 'json'
