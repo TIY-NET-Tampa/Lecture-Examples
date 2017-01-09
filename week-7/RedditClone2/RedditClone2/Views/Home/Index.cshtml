@@ -22,12 +22,12 @@
             <div class="row">
 
                 <div class="col-xs-2">
-                    @{
-                        var count = item.Upvotes - item.Downvotes;
+                    @{ 
+                        var btnVM = new RedditClone2.ViewModels.VoteButtonViewModel(item.Votes.FirstOrDefault(f => f.UserId)
                     }
-                    <div><button class="button-for-@item.Id" onclick="voteClick('@item.Id', '1')" ><i class="glyphicon glyphicon-chevron-up"></i></button></div>
-                    <div id="countFor-@item.Id">@count</div>
-                    <div><button class="button-for-@item.Id" onclick="voteClick('@item.Id', '-1')" @(User.Identity.IsAuthenticated ? "":"disabled='disabled'")><i class="glyphicon glyphicon-chevron-down"></i></button></div>
+                    <div><button class="button-for-@item.Id)" onclick="voteClick('@item.Id', '1')" @disabledString><i class="glyphicon glyphicon-chevron-up"></i></button></div>
+                    <div id="countFor-@item.Id">@item.VoteSum</div>
+                    <div><button class="button-for-@item.Id" onclick="voteClick('@item.Id', '-1')" @disabledString><i class="glyphicon glyphicon-chevron-down"></i></button></div>
 
                 </div>
                 <div class="col-xs-10">
@@ -62,17 +62,11 @@
         }
         var voteClick = function (id, value) {
             console.log("Voting:" + value + "for" + id);
-            // ajax call
-            var json = {
-                PostId: id,
-                Vote: value
-            }
+            
             var route = "/api/vote/".concat(id, "/", (value == 1) ? "up" : "down");
-           // var r = "/api/vote" + id + "/" + (value == 1) ? "up" : "down";
             $.ajax({
                 type: 'POST',
                 url: route,
-                data: JSON.stringify(json),
                 success: function (data) {
                     if (data.Message) {
                         alert(data.Message);

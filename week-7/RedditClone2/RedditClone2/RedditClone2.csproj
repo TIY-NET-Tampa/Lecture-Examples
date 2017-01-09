@@ -237,11 +237,20 @@
     <Compile Include="Migrations\201701051718336_First.Designer.cs">
       <DependentUpon>201701051718336_First.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701090140277_MovedVotesOut.cs" />
+    <Compile Include="Migrations\201701090140277_MovedVotesOut.Designer.cs">
+      <DependentUpon>201701090140277_MovedVotesOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701090152066_UpdatedValues.cs" />
+    <Compile Include="Migrations\201701090152066_UpdatedValues.Designer.cs">
+      <DependentUpon>201701090152066_UpdatedValues.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RedditPost.cs" />
+    <Compile Include="Models\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -320,6 +329,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201701051718336_First.resx">
       <DependentUpon>201701051718336_First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701090140277_MovedVotesOut.resx">
+      <DependentUpon>201701090140277_MovedVotesOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701090152066_UpdatedValues.resx">
+      <DependentUpon>201701090152066_UpdatedValues.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

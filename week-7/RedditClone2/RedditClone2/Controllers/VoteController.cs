@@ -6,6 +6,9 @@ using System.Net.Http;
 using System.Web.Http;
 using RedditClone2.ViewModels;
 using RedditClone2.Models;
+using System.Web;
+using Microsoft.AspNet.Identity;
+
 
 namespace RedditClone2.Controllers
 {
@@ -20,11 +23,17 @@ namespace RedditClone2.Controllers
             var post = db.RedditPosts.FirstOrDefault(f => f.Id == postId);
             if (post != null)
             {
-                post.Upvotes++;
+                var newVote = new Vote
+                {
+                    PostId = postId,
+                    UserId = User.Identity.GetUserId(),
+                }.Upvote();
+                post.Votes.Add(newVote);
                 db.SaveChanges();
-                return Ok(new { NewCount = post.Upvotes - post.Downvotes});
+                return Ok(new VoteResponseViewModel { NewCount = post.VoteSum });
             }
             return NotFound();
+
         }
 
 
@@ -35,9 +44,14 @@ namespace RedditClone2.Controllers
             var post = db.RedditPosts.FirstOrDefault(f => f.Id == postId);
             if (post != null)
             {
-                post.Downvotes++;
+                var newVote = new Vote
+                {
+                    PostId = postId,
+                    UserId = User.Identity.GetUserId(),
+                }.DownVote();
+                post.Votes.Add(newVote);
                 db.SaveChanges();
-                return Ok(new VoteResponseViewModel { NewCount = post.Upvotes - post.Downvotes });
+                return Ok(new VoteResponseViewModel { NewCount = post.VoteSum });
             }
             return NotFound();
         }
