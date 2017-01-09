@@ -17,6 +17,10 @@ namespace RedditClone2.Controllers
             ViewBag.Title = "Welcome TO TIY-IT";
             var db = new ApplicationDbContext();
             var posts = db.RedditPosts.ToList();
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewBag.UserId = User.Identity.GetUserId();
+            }
             return View(posts);
         }
 

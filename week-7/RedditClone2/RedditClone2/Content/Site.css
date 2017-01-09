@@ -23,8 +23,10 @@ textarea {
     max-width: 280px;
 }
 
+.downVoted{
+    color:red;
+}
 
-input
-{
-    border:1px solid green !important;
+.upVoted{
+    color:orange;
 }

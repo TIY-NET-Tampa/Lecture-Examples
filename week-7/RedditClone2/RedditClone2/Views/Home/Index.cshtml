@@ -20,14 +20,30 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
-
-                <div class="col-xs-2">
-                    @{
-                        var count = item.Upvotes - item.Downvotes;
+                @{
+                    var upVotedClass = "";
+                    var downVotedClass = "";
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        var userVote = item.Votes.SingleOrDefault(w => w.UserId == ViewBag.UserId);
+                        if (userVote != null)
+                        {
+                            if (userVote.Weight == RedditClone2.Models.VoteWeight.UpVote)
+                            {
+                                upVotedClass = "upVoted";
+                            }
+                            else if (userVote.Weight == RedditClone2.Models.VoteWeight.DownVote)
+                            {
+                                downVotedClass = "downVoted";
+                            }
+                        }
                     }
-                    <div><button class="button-for-@item.Id" onclick="voteClick('@item.Id', '1')" ><i class="glyphicon glyphicon-chevron-up"></i></button></div>
-                    <div id="countFor-@item.Id">@count</div>
-                    <div><button class="button-for-@item.Id" onclick="voteClick('@item.Id', '-1')" @(User.Identity.IsAuthenticated ? "":"disabled='disabled'")><i class="glyphicon glyphicon-chevron-down"></i></button></div>
+
+                }
+                <div class="col-xs-2">
+                    <div><button class="up-button-for-@item.Id @upVotedClass" onclick="voteClick('@item.Id', '1')" @(User.Identity.IsAuthenticated ? "" : "disabled='disabled'") A><i class="glyphicon glyphicon-chevron-up"></i></button></div>
+                    <div id="countFor-@item.Id">@item.VoteSum</div>
+                    <div><button class="down-button-for-@item.Id @downVotedClass" onclick="voteClick('@item.Id', '-1')" @(User.Identity.IsAuthenticated ? "" : "disabled='disabled'")><i class="glyphicon glyphicon-chevron-down"></i></button></div>
 
                 </div>
                 <div class="col-xs-10">
@@ -47,15 +63,30 @@
         </div>
     </div>
 
-                        }
+                    }
 
 
 @section scripts{
     <script>
-        var disabledButtonsOnPost = function (postId) {
-            var btnsToDisable = ".button-for-" + postId;
-            $(btnsToDisable).attr("disabled", "disabled");
+        var colorButtonsForPost = function (postId, value) {
+            var upButton = '.up-button-for-' + postId;
+            var downButton = '.down-button-for-' + postId;
+            if (value == "up")
+            {
+                $(upButton).addClass("upVoted");
+                $(downButton).removeClass("downVoted");
+            }
+            else if (value == "down")
+            {
+                $(upButton).removeClass("upVoted");
+                $(downButton).addClass("downVoted");
+            }
+            else {
+                $(upButton).removeClass("upVoted");
+                $(downButton).removeClass("downVoted");
+            }
         }
+
         var updateCounter = function (newCount, id) {
             var itemToUpdate = "#countFor-" + id;
             $(itemToUpdate).html(newCount);
@@ -68,7 +99,7 @@
                 Vote: value
             }
             var route = "/api/vote/".concat(id, "/", (value == 1) ? "up" : "down");
-           // var r = "/api/vote" + id + "/" + (value == 1) ? "up" : "down";
+            // var r = "/api/vote" + id + "/" + (value == 1) ? "up" : "down";
             $.ajax({
                 type: 'POST',
                 url: route,
@@ -79,7 +110,17 @@
                     }
                     // disable the upvote button for this item
                     var newCount = data.NewCount;
-                    disabledButtonsOnPost(id);
+                    var value = "noVote";
+                    if (data.Vote)
+                    {
+                        if (data.Vote == 1) {
+                            value = "up";
+                        } else if (data.Vote == -1) {
+                            value = "down";
+                        }
+
+                    }
+                    colorButtonsForPost(id, value);
                     updateCounter(newCount, id);
                 },
                 contentType: "application/json",

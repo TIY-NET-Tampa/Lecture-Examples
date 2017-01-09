@@ -14,6 +14,7 @@ namespace RedditClone2.Models
         public int Karma { get; set; }
 
         public ICollection<RedditPost> Posts { get; set; }
+        public ICollection<Vote> Votes { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

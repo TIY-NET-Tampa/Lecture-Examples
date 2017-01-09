@@ -241,11 +241,21 @@
     <Compile Include="Migrations\201701091426077_Rollback.Designer.cs">
       <DependentUpon>201701091426077_Rollback.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701091545137_AddingVoteTable.cs" />
+    <Compile Include="Migrations\201701091545137_AddingVoteTable.Designer.cs">
+      <DependentUpon>201701091545137_AddingVoteTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701091639548_RemovedUnNeededPKForVote.cs" />
+    <Compile Include="Migrations\201701091639548_RemovedUnNeededPKForVote.Designer.cs">
+      <DependentUpon>201701091639548_RemovedUnNeededPKForVote.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\VoteWeight.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RedditPost.cs" />
+    <Compile Include="Models\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -327,6 +337,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701091426077_Rollback.resx">
       <DependentUpon>201701091426077_Rollback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701091545137_AddingVoteTable.resx">
+      <DependentUpon>201701091545137_AddingVoteTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701091639548_RemovedUnNeededPKForVote.resx">
+      <DependentUpon>201701091639548_RemovedUnNeededPKForVote.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
