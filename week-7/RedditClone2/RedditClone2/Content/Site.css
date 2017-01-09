@@ -22,3 +22,9 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+input
+{
+    border:1px solid green !important;
+}

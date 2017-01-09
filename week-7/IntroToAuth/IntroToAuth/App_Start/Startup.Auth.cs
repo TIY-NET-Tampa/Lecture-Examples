@@ -54,7 +54,7 @@ namespace IntroToAuth
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
+            //app.UseFacebookAuthentication('
             //   appId: "",
             //   appSecret: "");
 

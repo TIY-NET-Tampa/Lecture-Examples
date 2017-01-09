@@ -237,6 +237,10 @@
     <Compile Include="Migrations\201701051718336_First.Designer.cs">
       <DependentUpon>201701051718336_First.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701091426077_Rollback.cs" />
+    <Compile Include="Migrations\201701091426077_Rollback.Designer.cs">
+      <DependentUpon>201701091426077_Rollback.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -320,6 +324,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201701051718336_First.resx">
       <DependentUpon>201701051718336_First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701091426077_Rollback.resx">
+      <DependentUpon>201701091426077_Rollback.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
