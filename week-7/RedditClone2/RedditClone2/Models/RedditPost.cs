@@ -13,6 +13,7 @@ namespace RedditClone2.Models
 
         [Required]
         [StringLength(255)]
+        [DisplayFormat(DataFormatString = "My Title is {0}")]
         public string Title { get; set; }
 
         public string Body { get; set; }
