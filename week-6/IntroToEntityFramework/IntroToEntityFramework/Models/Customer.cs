@@ -19,7 +19,7 @@ namespace IntroToEntityFramework.Models
         public string Email { get; set; }
 
         public int? AddressId { get; set; }
-        public virtual Address Address { get; set; }
+        public  Address Address { get; set; }
 
         public virtual ICollection<Movies> Movies { get; set; } = new HashSet<Movies>();
 

@@ -23,7 +23,7 @@ namespace IntroToEntityFramework
         static void Main(string[] args)
         {
             var db = new RentalContext();
-            
+
             // SELECT * FROM Customers
             var customers = db.Customers.ToList();
             var notYet = db.Customers;
@@ -93,6 +93,7 @@ namespace IntroToEntityFramework
 
 
             // Adding a foreign Key
+            
             // bring the customer into context
             var customer = db.Customers.First(f => f.Name == "Billy");
 
@@ -123,16 +124,15 @@ namespace IntroToEntityFramework
             // Many to Many relationships
 
             //// adding a new movie to a customer
-            //var movie = new Movies
-            //{
-            //    Name = "Back to the Future"
-            //};
+            var movie = new Movies
+            {
+                Name = "Back to the Future"
+            };
 
-            //var cus1 = db.Customers.First(f => f.Id == 2);
-            //cus1.Movies.Add(movie);
-            //db.SaveChanges();
-
-
+            var cus1 = db.Customers.First(f => f.Id == 2);
+            cus1.Movies.Add(movie);
+            db.SaveChanges();
+        
             //// Add a customer to a new movie
             //var movie2 = new Movies { Name = "Jurassic Park" };
             //db.Movies.Add(movie2);

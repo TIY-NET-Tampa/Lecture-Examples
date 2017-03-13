@@ -43,7 +43,7 @@ namespace CsvIntro
 
 
             // TO read a file
-            var newCards = new List<Car>();
+            var newCars = new List<Car>();
             using (var sr = new StreamReader(filePath))
             {
                 while (sr.Peek() > 0)
@@ -51,7 +51,7 @@ namespace CsvIntro
                     var line = sr.ReadLine().Split(',');
                     var name = line[0];
                     var color = line[1];
-                    newCards.Add(new Car { Name = name, Color = color });
+                    newCars.Add(new Car { Name = name, Color = color });
                     //Console.WriteLine(line);
                 }
                 

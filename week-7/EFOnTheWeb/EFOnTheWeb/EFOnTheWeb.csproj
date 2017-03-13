@@ -85,6 +85,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MiniProfiler, Version=3.2.0.157, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniProfiler.3.2.0.157\lib\net40\MiniProfiler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MiniProfiler.EntityFramework6, Version=3.0.11.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniProfiler.EF6.3.0.11\lib\net40\MiniProfiler.EntityFramework6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -203,6 +211,10 @@
     <Compile Include="Migrations\201701031610404_Firstie.Designer.cs">
       <DependentUpon>201701031610404_Firstie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702211530075_Something.cs" />
+    <Compile Include="Migrations\201702211530075_Something.Designer.cs">
+      <DependentUpon>201702211530075_Something.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\DealershipContext.cs" />
@@ -269,6 +281,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201701031610404_Firstie.resx">
       <DependentUpon>201701031610404_Firstie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702211530075_Something.resx">
+      <DependentUpon>201702211530075_Something.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

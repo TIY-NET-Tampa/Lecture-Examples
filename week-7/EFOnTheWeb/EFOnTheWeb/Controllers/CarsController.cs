@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using EFOnTheWeb.Models;
 using System.Web.Http;
+using StackExchange.Profiling;
 
 namespace EFOnTheWeb.Controllers
 {
@@ -18,7 +19,19 @@ namespace EFOnTheWeb.Controllers
         // GET: Cars
         public ActionResult Index()
         {
-            return View(db.Cars.ToList());
+            var profiler = MiniProfiler.Current;
+            using (profiler.Step("Getting red cars"))
+            {
+                ViewBag.Title = "Home Page";
+                var redCars = db.Cars.Where(c => c.Color == "red").ToList();
+            }
+
+            var list = new List<Car>();
+            using (profiler.Step("getting all list"))
+            {
+               list = db.Cars.ToList();
+            }
+            return View(list);
         }
 
         // GET: Cars/Details/5
