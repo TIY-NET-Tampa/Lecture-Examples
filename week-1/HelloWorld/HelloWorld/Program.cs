@@ -16,6 +16,10 @@ namespace HelloWorld
             // store the value 5 in a varible
             int anythingIWant = 5;
 
+
+
+
+
             float someNumber = 5.4f;
             double myDouble = 5.3d;
 
@@ -91,12 +95,14 @@ namespace HelloWorld
 
             // var!
 
-            int num = 10;
+          //  int num = 10;
 
             var alsoTen = DateTime.Now;
 
             var myFloat = 10.4;
 
+
+            int num = int.Parse(Console.ReadLine());
 
         }
 
