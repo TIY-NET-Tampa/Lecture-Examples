@@ -10,27 +10,34 @@ namespace Day2HomeReview
     {
         static void Main(string[] args)
         {
-            var target = new Random().Next(1,101);
+            var target = new Random().Next(1, 101);
             Console.WriteLine($"the target is {target}");
 
-            Console.WriteLine("Give me your best guess");
-            var input = Console.ReadLine();
+            var counter = 0;
             var guess = 0;
-            int.TryParse(input, out guess);
 
-            Console.WriteLine($"your guess was {guess}");
-
-
-            if (guess < target)
+            while (counter < 5 && guess != target)
             {
-                Console.WriteLine("Too low");
-            }
-            else if (guess > target)
-            {
-                Console.WriteLine("Too high");
+                Console.WriteLine("Give me your best guess");
+                var input = Console.ReadLine();
+                int.TryParse(input, out guess);
+
+                Console.WriteLine($"your guess was {guess}");
+
+                if (guess < target)
+                {
+                    Console.WriteLine("Too low, try again.");
+                }
+                else if (guess > target)
+                {
+                    Console.WriteLine("Too high, try again");
+                }
+                counter++;
             }
 
+            if ()
 
-        }
+
+}
     }
 }
