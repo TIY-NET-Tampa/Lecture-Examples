@@ -8,9 +8,6 @@ namespace Day2HomeReview.Logic
 {
     static class NumberGuesser
     {
-        static List<int> pastGuess = new List<int>();
-
-
         static int ReadNumberFromTerminal()
         {
             Console.WriteLine("Give me your best guess");
@@ -19,7 +16,7 @@ namespace Day2HomeReview.Logic
             return guess;
         }
 
-        static void DisplayPastGuess()
+        static void DisplayPastGuess(List<int> pastGuess)
         {
             Console.WriteLine("Your past guesses are:");
             foreach (var userGuess in pastGuess)
@@ -31,7 +28,7 @@ namespace Day2HomeReview.Logic
             }
         }
 
-        static bool WasAlreadyGuessed(int guess)
+        static bool WasAlreadyGuessed(List<int> pastGuess,int guess)
         {
             var wasAlreadyGuess = false;
 
@@ -45,7 +42,7 @@ namespace Day2HomeReview.Logic
             return wasAlreadyGuess;
         }
 
-        static void AddToGuesses(int guess)
+        static void AddToGuesses(List<int> pastGuess,int guess)
         {
             pastGuess.Add(guess);
         }
@@ -89,13 +86,14 @@ namespace Day2HomeReview.Logic
         {
             var counter = 0;
             var guess = 0;
+            var pastGuesses = new List<int>();
             while (counter < 5 && guess != target)
             {
                 // Read in number from CLI
                 guess = ReadNumberFromTerminal();
 
                 // See if the number was already guessed
-                var wasAlreadyGuess = WasAlreadyGuessed(guess);
+                var wasAlreadyGuess = WasAlreadyGuessed(pastGuesses, guess);
 
                 if (wasAlreadyGuess)
                 {
@@ -104,13 +102,13 @@ namespace Day2HomeReview.Logic
                 else
                 {
                     // add to pastguesses
-                    AddToGuesses(guess);
+                    AddToGuesses(pastGuesses, guess);
 
 
                     DisplayTooHighOrTooLowMessage(guess, target);
                 }
                 // display past guesses
-                DisplayPastGuess();
+                DisplayPastGuess(pastGuesses);
                 // increment guess counter
                 counter++;
             }
