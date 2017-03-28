@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{65C0A6D6-BAD9-4EA4-8633-32F52321AC8D}</ProjectGuid>
+    <ProjectGuid>{7AE46D84-685C-4A96-96C3-C81DE94C6705}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>IntroToOOP</RootNamespace>
-    <AssemblyName>IntroToOOP</AssemblyName>
+    <RootNamespace>HomeworkReview_TownWithClass</RootNamespace>
+    <AssemblyName>HomeworkReview-TownWithClass</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,14 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cat.cs" />
-    <Compile Include="Dog.cs" />
-    <Compile Include="Iguana.cs" />
+    <Compile Include="Bank.cs" />
+    <Compile Include="House.cs" />
     <Compile Include="Person.cs" />
-    <Compile Include="Pet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ISpeakable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

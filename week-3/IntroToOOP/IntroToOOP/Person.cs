@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace IntroToOOP
 {
-    class Person
+    class Person : ISpeakable
     {
         public string Name { get; set; }
         public int Height { get; set; }
         public string HairColor { get; set; }
+        public List<Pet> Pets { get; set; } = new List<Pet>();
 
         private int _age;
 
@@ -31,14 +32,15 @@ namespace IntroToOOP
         {
             Console.WriteLine("Creating a new Person");
             this.Name = name;
-            this.SayGreeting();
+            this.Speak();
         }
 
-
-        public void SayGreeting()
+        public void Speak()
         {
             Console.WriteLine( $"Hello, my name is : {this.Name}"); 
         }
+
+
 
     }
 }

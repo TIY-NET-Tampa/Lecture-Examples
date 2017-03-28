@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{65C0A6D6-BAD9-4EA4-8633-32F52321AC8D}</ProjectGuid>
+    <ProjectGuid>{1413C9C6-47A1-4590-9C9D-FC6E0EA4B53B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>IntroToOOP</RootNamespace>
-    <AssemblyName>IntroToOOP</AssemblyName>
+    <RootNamespace>CodeWars_FakeBinary</RootNamespace>
+    <AssemblyName>CodeWars-FakeBinary</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,14 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cat.cs" />
-    <Compile Include="Dog.cs" />
-    <Compile Include="Iguana.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="Pet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ISpeakable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
