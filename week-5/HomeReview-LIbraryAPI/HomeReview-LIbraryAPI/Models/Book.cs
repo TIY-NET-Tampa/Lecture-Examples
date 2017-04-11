@@ -14,6 +14,7 @@ namespace HomeReview_LIbraryAPI.Models
             this.Id = (int)reader["Id"];
             this.Name = reader["Name"].ToString();
             this.DueBackDate = reader["DueBackDate"] as DateTime?;
+            this.IsCheckedOut = reader["IsCheckedOut"] as bool?;
         }
 
         public int Id { get; set; }
