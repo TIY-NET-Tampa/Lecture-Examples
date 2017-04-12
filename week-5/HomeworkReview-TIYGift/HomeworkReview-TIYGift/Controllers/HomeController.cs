@@ -13,9 +13,9 @@ namespace HomeworkReview_TIYGift.Controllers
      - X Data flow - How does data flow from controller to view to model back to the view????
         - why to have have a GET & POST to do an Update
      - X How to wire buttons to do stuff
-     - How to work with create & Edit layouts when creating a view -- how to refernce what was inputted 
-     - using the templates -- more how to tweak the HTML side of things 
-     - many issues with id -- edit/Update how does that affect 
+     - X How to work with create & Edit layouts when creating a view -- how to refernce what was inputted 
+     - X using the templates -- more how to tweak the HTML side of things 
+     - X many issues with id -- edit/Update how does that affect 
          */
 
 
