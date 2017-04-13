@@ -2,12 +2,25 @@
 using HomeworkReview_TIYGift.Services;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace HomeworkReview_TIYGift.Controllers
 {
+
+    /*
+ Questions: 
+ - X ActionLink Variations
+ - X Begin Forms
+ - Wiring up the Buttons for Opening a Gift
+ - How to tranfer data with the buttons to multiple Pages
+ - go over the CSS (what css we are working)
+    - Create a service layer that takes a connection string as paramter and createas and SQL connection ithe Ctor
+
+     */
+
     public class GiftsController : Controller
     {
 
@@ -37,22 +50,32 @@ namespace HomeworkReview_TIYGift.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            // accept  & parse the input (formcollection)
-            var updatedGift = new Gift
+                var updatedGift = new Gift
+                {
+                    Contents = collection["Contents"],
+                    Hints = collection["Hints"],
+                    Depth = double.Parse(collection["Depth"]),
+                    Height = double.Parse(collection["Height"]),
+                    Weight = double.Parse(collection["Weight"]),
+                    IsOpened = bool.Parse(collection["IsOpened"]),
+                    Width = double.Parse(collection["Width"]),
+                    Id = id
+                };
+            try
             {
-                Contents = collection["Contents"],
-                Hints = collection["Hints"],
-                Depth = double.Parse(collection["Depth"]),
-                Height = double.Parse(collection["Height"]),
-                Weight = double.Parse(collection["Weight"]),
-                IsOpened = bool.Parse(collection["IsOpened"]),
-                Width = double.Parse(collection["Width"]),
-                Id = id
-            };
-            // save it to our database
-            GiftService.UpdateGift(updatedGift);
-            // redirect to the correct page 
-            return RedirectToAction("Index");
+                // accept  & parse the input (formcollection)
+                // save it to our database
+                GiftService.UpdateGift(updatedGift);
+                // redirect to the correct page 
+                return RedirectToAction("Index");
+            }
+            catch (SqlException ex)
+            {
+
+                ViewBag.ErrorMessage = "There was issue with you Gift, Try again.";
+                ViewBag.ErrorTitleThatisSomethingCollThatisNotWhereElseInmYProgram = true;
+                return View(updatedGift);
+            }
         }
 
 
@@ -70,6 +93,6 @@ namespace HomeworkReview_TIYGift.Controllers
             return RedirectToAction("Index");
         }
 
-       
+
     }
 }

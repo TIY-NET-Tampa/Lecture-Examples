@@ -6,6 +6,10 @@
 
 <h2>Index</h2>
 
+
+@Html.ActionLink()
+
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -60,7 +64,11 @@
             @Html.DisplayFor(modelItem => item.Weight)
         </td>
         <td>
-           
+         @* <a href="/Gift/Edit?id=3&name=some%20value>Edit this gift</a>*@
+            @Html.ActionLink("Edit this Gift", "Edit", new { id=item.Id, name = "some value" });
+            @* <a href="/Other/edit/3 data="1" class="a-tag-styling"> Other Controller</a>*@
+            @Html.ActionLink("Other controller", "edit", "Other", new { id = item.Id }, new { @class = "a-tag-styling", data = "1" })
+
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id }) |

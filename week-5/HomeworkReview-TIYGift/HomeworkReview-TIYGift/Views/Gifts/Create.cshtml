@@ -2,17 +2,33 @@
 
 @{
     ViewBag.Title = "Create";
+    var pi = 3.14;
+    var myList = new List<int>();
+
+
 }
 
 <h2>Create</h2>
 
+@*
+    
+<form action="/Search/Gifts" method="GET">
 
-@using (Html.BeginForm()) 
+</form>
+
+*@
+
+
+
+@using (Html.BeginForm("Gifts", "Search", new { id = Model.Id }, FormMethod.Get, null))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Gift</h4>
+        <h4>Gift for @pi</h4>
+        <ul>
+            <li>@pi</li>
+        </ul>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
