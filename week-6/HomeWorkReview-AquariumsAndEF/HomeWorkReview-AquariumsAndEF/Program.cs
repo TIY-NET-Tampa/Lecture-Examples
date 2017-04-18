@@ -27,16 +27,22 @@ namespace HomeWorkReview_AquariumsAndEF
 
             var db = new AquaContext();
 
-            var query1 = db.AquariumAquaticLifeOcean
-                .Include(i => i.Aquarium)
+            // WITH The "DEFAULT" Tables
+            var query1 = db.Aquariums
                 .Include(i => i.AquaticLife)
-                .Include(i => i.Ocean)
-                .Where(w => w.Aquarium.Name == "Fish Tank");
+                .Where(w => w.Name == "Fish Tank");
 
-            foreach (var item in query1)
-            {
-                Console.WriteLine(item.AquaticLife.Name);
-            }
+            // WITH 4 TABLES
+            //var query1 = db.AquariumAquaticLifeOcean
+            //    .Include(i => i.Aquarium)
+            //    .Include(i => i.AquaticLife)
+            //    .Include(i => i.Ocean)
+            //    .Where(w => w.Aquarium.Name == "Fish Tank");
+
+            //foreach (var item in query1)
+            //{
+            //    Console.WriteLine(item.AquaticLife.Name);
+            //}
 
         }
     }

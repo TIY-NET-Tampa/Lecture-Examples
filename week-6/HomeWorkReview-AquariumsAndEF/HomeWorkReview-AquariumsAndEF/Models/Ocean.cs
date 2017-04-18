@@ -11,5 +11,7 @@ namespace HomeWorkReview_AquariumsAndEF.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public double AverageTemp { get; set; }
+
+        public virtual ICollection<AquaticLIfe> AquaticLife { get; set; } = new HashSet<AquaticLIfe>();
     }
 }

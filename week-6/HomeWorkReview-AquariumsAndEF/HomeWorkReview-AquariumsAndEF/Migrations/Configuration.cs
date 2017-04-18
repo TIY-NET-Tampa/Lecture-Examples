@@ -30,9 +30,11 @@ namespace HomeWorkReview_AquariumsAndEF.Migrations
             {
                 new AquaticLIfe{ Name ="Mr, Otter",Type="Otter", Color ="brown" },
                 new AquaticLIfe {Name = "Jaws", Type = "Great white", Color = "white"},
-                new AquaticLIfe { Name = "Mr Puff", Type ="Puffer", Color="yellow"}
+                new AquaticLIfe { Name = "Mr Puff", Type ="Puffer", Color="yellow"}, 
+                new AquaticLIfe {Name = "Ms Raaay", Type="Ray", Color="Blue"}
             };
             fishes.ForEach(fish => db.AquaticLife.AddOrUpdate(f => f.Type, fish));
+
 
             var locations = new List<Aquarium>
             {
@@ -43,15 +45,19 @@ namespace HomeWorkReview_AquariumsAndEF.Migrations
             locations.ForEach(city => db.Aquariums.AddOrUpdate(c => c.Name, city));
             db.SaveChanges();
 
-            var mrPuff = new AquariumAquaticLifeOcean
-            {
-                AquariumId = locations.First(f => f.Name == "Fish Tank").Id,
-                OceanId = oceans.First(f => f.Name == "Indian").Id,
-                AquaticLifeId = fishes.First(f => f.Name == "Mr Puff").Id
-            };
+            
+            var mrPuff = fishes.First(f => f.Name == "Mr Puff");
+            var fishTank = locations.First(f => f.Name == "Fish Tank");
+            var tampa = locations.First(f => f.Name == "Downtown Aquarium");
+            var msRaaay = fishes.First(f => f.Name == "Ms Raaay");
 
-            db.AquariumAquaticLifeOcean.AddOrUpdate(a => new { a.OceanId, a.AquariumId, a.AquaticLifeId }, mrPuff);
+            fishTank.AquaticLife.Add(mrPuff);
+            db.SaveChanges();
+            // Want, Mr Puff, to be int he FishBurg Fish Tank
 
+            msRaaay.Aquariums.Add(tampa);
+            db.SaveChanges();
+            // Add Ms Raaaaaay
 
 
         }

@@ -24,7 +24,5 @@ namespace HomeWorkReview_AquariumsAndEF.Datacontext
         public DbSet<Ocean> Oceans { get; set; }
         public DbSet<Aquarium> Aquariums  { get; set; }
         public DbSet<AquaticLIfe> AquaticLife { get; set; }
-        public DbSet<AquariumAquaticLifeOcean> AquariumAquaticLifeOcean { get; set; }
-        
     }
 }

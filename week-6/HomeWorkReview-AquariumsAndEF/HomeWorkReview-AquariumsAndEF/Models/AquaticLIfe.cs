@@ -13,5 +13,8 @@ namespace HomeWorkReview_AquariumsAndEF.Models
         public string Color { get; set; }
         public string Name { get; set; }
         public DateTime DataAddedToTank { get; set; } = DateTime.Now;
+
+        public virtual ICollection<Aquarium> Aquariums { get; set; } = new HashSet<Aquarium>();
+        public virtual ICollection<Ocean> Oceans { get; set; } = new HashSet<Ocean>();
     }
 }
