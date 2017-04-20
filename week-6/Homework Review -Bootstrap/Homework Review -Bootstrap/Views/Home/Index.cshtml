@@ -1,0 +1,88 @@
+﻿@model Homework_Review__Bootstrap.ViewModels.IndexViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+
+@if (ViewBag.TeamName != null)
+{
+
+    <div class="row">
+        <div class="col-lg-12 bg-info">
+            You selected @ViewBag.TeamName
+        </div>
+    </div>
+}
+
+@if (ViewBag.PageNum != null)
+{
+
+    <div class="row">
+        <div class="col-lg-12 bg-green">
+            You are on page @ViewBag.PageNum
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col-md-12">
+        @Html.ActionLink("1", "Index", new { pageNum = 1 })
+        @Html.ActionLink("2", "Index", new { pageNum = 2 })
+        @Html.ActionLink("3", "Index", new { pageNum = 3 })
+        @Html.ActionLink("4", "Index", new { pageNum = 4 })
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="glyphicon glyphicon-check"></i>&nbsp;Games</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <td>Number</td>
+                            <td>Home Team</td>
+                            <td>Away Team</td>
+                            <td>Score</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var game in Model.Games)
+                        {
+                            <tr>
+                                <td>
+                                    @game.Id
+                                </td>
+                                <td>
+                                    @* WHen i click on a team, it shows the team information on the same page*@
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.HiddenFor(m => m.Games.First().HomeTeam, game.HomeTeam)
+                                        <button class="btn btn-link">@game.HomeTeam</button>
+                                    }
+                                </td>
+                                <td>
+                                    @game.AwayTeam
+                                </td>
+                                <td>
+                                    @game.HomeScore<span>-</span>@game.AwayScore
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
