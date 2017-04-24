@@ -1,0 +1,47 @@
+﻿@model IEnumerable<HomeworkReview_Reddit_WithAuth.Models.PostModel>
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Posts</h2>
+
+@if (HttpContext.Current.User.Identity.IsAuthenticated)
+{
+    <div>@Html.ActionLink("Create New", "Create", "PostModels")</div>
+}
+
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-md-2">
+            
+            @using (Html.BeginForm("Up", "Vote", new { id = item.Id }))
+            {
+                <button btn="btn btn-link">
+                    <i class="glyphicon glyphicon-arrow-up"></i>
+                </button>
+            }
+            
+            <span>@(item.UpVote - item.DownVote)</span>
+
+            <a href="Vote/Down/@item.Id">
+                <i class="glyphicon glyphicon-arrow-down"></i>
+            </a>
+        </div>
+        <div class="col-md-10">
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="..." alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">@item.Title</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+}
