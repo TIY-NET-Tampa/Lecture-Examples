@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using HomeworkReview_Reddit_WithAuth.Models;
 
+
 namespace HomeworkReview_Reddit_WithAuth.Controllers
 {
     [Authorize]

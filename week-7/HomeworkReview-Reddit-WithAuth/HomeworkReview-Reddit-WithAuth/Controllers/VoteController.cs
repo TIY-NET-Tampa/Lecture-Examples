@@ -18,5 +18,14 @@ namespace HomeworkReview_Reddit_WithAuth.Controllers
             db.SaveChanges();
             return PartialView("_voteDisplay", post);
         }
+        // GET: Vote
+        public ActionResult Down(int id)
+        {
+            var db = new ApplicationDbContext();
+            var post = db.RedditPosts.FirstOrDefault(f => f.Id == id);
+            post.DownVote += 1;
+            db.SaveChanges();
+            return PartialView("_voteDisplay", post);
+        }
     }
 }
