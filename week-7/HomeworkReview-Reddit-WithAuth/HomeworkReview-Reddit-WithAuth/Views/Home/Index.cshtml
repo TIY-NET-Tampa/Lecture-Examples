@@ -16,20 +16,8 @@
 @foreach (var item in Model)
 {
     <div class="row">
-        <div class="col-md-2">
-            
-            @using (Html.BeginForm("Up", "Vote", new { id = item.Id }))
-            {
-                <button btn="btn btn-link">
-                    <i class="glyphicon glyphicon-arrow-up"></i>
-                </button>
-            }
-            
-            <span>@(item.UpVote - item.DownVote)</span>
-
-            <a href="Vote/Down/@item.Id">
-                <i class="glyphicon glyphicon-arrow-down"></i>
-            </a>
+        <div class="col-md-2" id="voteContainer-@item.Id">
+            @Html.Partial("_voteDisplay", item)
         </div>
         <div class="col-md-10">
             <div class="media">

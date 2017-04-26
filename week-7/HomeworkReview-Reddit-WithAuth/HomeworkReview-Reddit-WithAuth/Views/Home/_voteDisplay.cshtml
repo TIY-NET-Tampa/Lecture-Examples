@@ -1,0 +1,12 @@
+﻿@model HomeworkReview_Reddit_WithAuth.Models.PostModel
+
+
+<button btn="btn btn-link" onclick="upVote(@Model.Id);">
+    <i class="glyphicon glyphicon-arrow-up"></i>
+</button>
+
+<span>@(Model.UpVote - Model.DownVote)</span>
+
+<button btn="btn btn-link" onclick="downVote(@Model.Id);">
+    <i class="glyphicon glyphicon-arrow-down"></i>
+</button>

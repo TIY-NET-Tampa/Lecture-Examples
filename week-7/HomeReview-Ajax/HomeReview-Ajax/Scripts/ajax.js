@@ -1,0 +1,1 @@
+﻿console.log("loaded ajax.js");

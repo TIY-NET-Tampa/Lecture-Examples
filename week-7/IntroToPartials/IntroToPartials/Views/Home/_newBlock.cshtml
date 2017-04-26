@@ -1,0 +1,10 @@
+﻿@model IntroToPartials.ViewModel.NewsBlock
+
+
+<div class="col-md-4">
+    <h2>@Model.Header</h2>
+    @foreach (var paragraph in Model.Ptags)
+    {
+        <p>@paragraph</p>
+    }
+</div>

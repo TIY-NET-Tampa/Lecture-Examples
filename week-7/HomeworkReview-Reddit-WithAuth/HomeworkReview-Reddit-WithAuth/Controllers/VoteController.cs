@@ -14,14 +14,9 @@ namespace HomeworkReview_Reddit_WithAuth.Controllers
         {
             var db = new ApplicationDbContext();
             var post = db.RedditPosts.FirstOrDefault(f => f.Id == id);
-            if (post == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             post.UpVote += 1;
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
-
+            return PartialView("_voteDisplay", post);
         }
     }
 }
