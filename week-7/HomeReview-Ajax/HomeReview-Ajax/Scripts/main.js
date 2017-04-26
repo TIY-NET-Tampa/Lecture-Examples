@@ -24,5 +24,8 @@ $(document).ready(() => {
    
     console.log("ready...");
     loadAllMarbles();
+    $(".vote-button").on("click", function(){
+            //!$(this).....
+    });
 });
 
