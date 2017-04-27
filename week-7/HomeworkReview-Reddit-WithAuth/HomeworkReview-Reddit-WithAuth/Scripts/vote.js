@@ -1,18 +1,44 @@
-﻿let upVote = (postId) => {
-    let _data = {
-        id:postId
+﻿let trueTest = () => {
+
+    var myString = "";
+
+    if (myString) {
+        // string exsist and is something
+    } else {
+        //string doestn exist
     }
 
-    $.ajax({
-        url: "/vote/up",
-        data: JSON.stringify(_data),
-        contentType:"application/json",
-        type:"POST",
-        dataType: "html",
-        success: (newHtml) => {
-            $("#voteContainer-" + postId).html(newHtml);
-        }
-    })
+
+}
+
+
+
+let upVote = (postId) => {
+    let _data = {
+        id: postId
+    }
+
+    if (!postId) {
+        alert("No Post Found");
+    }
+    else {
+        $.ajax({
+            url: "/vote/up",
+            data: JSON.stringify(_data),
+            contentType: "application/json",
+            type: "POST",
+            dataType: "html",
+            success: (newHtml) => {
+                $("#voteContainer-" + postId).html(newHtml);
+            },
+            error: (jqXHR, textStatus, errorThrown) => {
+
+            }
+        })
+    }
+
+    
+
 }
 
 let downVote = (postId) => {

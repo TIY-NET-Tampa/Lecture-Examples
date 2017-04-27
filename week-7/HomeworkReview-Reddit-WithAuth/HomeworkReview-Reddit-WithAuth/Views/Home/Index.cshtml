@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<HomeworkReview_Reddit_WithAuth.Models.PostModel>
-
+@using HomeworkReview_Reddit_WithAuth.ViewModel;
 
 @{
     ViewBag.Title = "Home Page";
@@ -17,7 +17,7 @@
 {
     <div class="row">
         <div class="col-md-2" id="voteContainer-@item.Id">
-            @Html.Partial("_voteDisplay", item)
+            @Html.Partial("_voteDisplay", new VoteButtonContainerViewModel { Post = item, IsAllowedToVote = HttpContext.Current.User.Identity.IsAuthenticated })
         </div>
         <div class="col-md-10">
             <div class="media">

@@ -1,12 +1,30 @@
-﻿@model HomeworkReview_Reddit_WithAuth.Models.PostModel
+﻿@model HomeworkReview_Reddit_WithAuth.ViewModel.VoteButtonContainerViewModel
+
+@{
+    var upVoteClass = "";
+    var downVoteClass = "";
+    var disabled = "";
+    if (Model.VoteValue == 1)
+    {
+        upVoteClass = "up-clicked";
+    }
+    else if (Model.VoteValue == -1)
+    {
+        downVoteClass = "down-clicked";
+    }
+    if (!Model.IsAllowedToVote)
+    {
+        disabled = "disabled";
+    }
+}
 
 
-<button btn="btn btn-link" onclick="upVote(@Model.Id);">
+<button class="btn btn-link @upVoteClass" onclick="upVote(@Model.Post.Id);" @disabled>
     <i class="glyphicon glyphicon-arrow-up"></i>
 </button>
 
-<span>@(Model.UpVote - Model.DownVote)</span>
+<span>@(Model.Post.UpVote - Model.Post.DownVote)</span>
 
-<button btn="btn btn-link" onclick="downVote(@Model.Id);">
+<button class="btn btn-link @downVoteClass" onclick="downVote(@Model.Post.Id);" @disabled>
     <i class="glyphicon glyphicon-arrow-down"></i>
 </button>
