@@ -1,0 +1,21 @@
+﻿@model HomeworkReview_StackOverflow.Models.Question
+<tr>
+    <td>
+        @Html.DisplayFor(modelModel => Model.Text)
+    </td>
+    <td>
+        @Html.DisplayFor(modelModel => Model.Asked)
+    </td>
+    <td>
+        @Html.DisplayFor(modelModel => Model.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelModel => Model.IsAnswered)
+    </td>
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = Model.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+    </td>
+</tr>

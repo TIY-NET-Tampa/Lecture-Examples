@@ -1,0 +1,20 @@
+﻿@model HomeworkReview_StackOverflow.ViewModel.ProfileViewModel
+
+
+@{
+    ViewBag.Title = "MyData";
+}
+
+<h2>Questions for @Model.CurrentUser.Email</h2>
+
+
+
+@foreach (var item in Model.Questions)
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>@item.Title</h2>
+        </div>
+    </div>
+}
+

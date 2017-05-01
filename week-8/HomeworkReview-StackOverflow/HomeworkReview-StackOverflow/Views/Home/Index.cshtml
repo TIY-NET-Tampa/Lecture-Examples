@@ -1,0 +1,44 @@
+﻿@model IEnumerable<HomeworkReview_StackOverflow.Models.Question>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    <input class="input-group" type="text" id="needle" />
+    <button id="searchButton" onclick="searchQuestions();"><i class="glyphicon glyphicon-search"></i> </button>
+</div>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Asked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAnswered)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="results">
+      @Html.Partial("_QuestionsTable", Model)
+    </tbody>
+
+
+</table>

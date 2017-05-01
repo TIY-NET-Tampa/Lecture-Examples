@@ -1,0 +1,6 @@
+﻿@model IEnumerable<HomeworkReview_StackOverflow.Models.Question>
+
+@foreach (var item in Model)
+{
+    @Html.Partial("_QuestionResult", item)
+}

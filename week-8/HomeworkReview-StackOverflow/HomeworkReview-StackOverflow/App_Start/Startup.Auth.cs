@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using HomeworkReview_Reddit_WithAuth.Models;
+using HomeworkReview_StackOverflow.Models;
 
-namespace HomeworkReview_Reddit_WithAuth
+namespace HomeworkReview_StackOverflow
 {
     public partial class Startup
     {
@@ -58,11 +58,11 @@ namespace HomeworkReview_Reddit_WithAuth
             //   appId: "",
             //   appSecret: "");
 
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            {
-                ClientId = "1028324475488-pckfe1nc5k510i32r4eimnkbt2nh4460.apps.googleusercontent.com",
-                ClientSecret = "0YyKvGauUvR-6ut4KQ8GwL0p"
-            });
+            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            //{
+            //    ClientId = "",
+            //    ClientSecret = ""
+            //});
         }
     }
 }
