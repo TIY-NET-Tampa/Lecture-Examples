@@ -1,0 +1,23 @@
+﻿@model ResturantDemo.Models.Order
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<h2>Confirm you order</h2>
+
+@*
+
+    This page does:
+    - show the shopping
+    - show the total
+    - remove items
+
+*@
+
+
+<div id="cart">
+    @Html.Partial("_checkoutDisplayCart", Model)
+</div>
+
+

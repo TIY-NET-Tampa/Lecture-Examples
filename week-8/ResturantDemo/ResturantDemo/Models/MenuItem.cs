@@ -33,6 +33,9 @@ namespace ResturantDemo.Models
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
 
+        [NotMapped]
+        public Guid TrackerId { get; set; } = Guid.NewGuid();
+
         public ICollection<Order> Orders { get; set; }
     }
 }

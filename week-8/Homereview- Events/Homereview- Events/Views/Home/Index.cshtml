@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Homereview__Events.Models.EventModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Wooooh Events</h1>
+</div>
+
+<div class="row">
+    @foreach (var evnt in Model)
+    {
+        <div class="col-md-4">
+            @evnt.Title playing at @evnt.Venue.Name 
+            at @evnt.StartDate
+            genre: @evnt.Genre.Name
+
+        </div>
+
+    }
+</div>

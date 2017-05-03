@@ -1,0 +1,19 @@
+﻿@model ResturantDemo.Models.Order
+
+
+@if (Model.Items.Any())
+{
+    <h3>Your Cart:</h3>
+    <ul>
+        @foreach(var item in Model.Items)
+        {
+            <li>@item.Name</li>
+        }
+    </ul>
+    @Html.ActionLink("Checkout", "Checkout", "Home")
+}
+else
+{
+    <h4><i>your cart is empty :-(</i></h4>
+}
+

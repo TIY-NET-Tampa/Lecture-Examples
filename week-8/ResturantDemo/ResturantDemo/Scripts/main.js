@@ -20,6 +20,19 @@ let addToCart = (itemId) => {
     });
 }
 
+let removeFromCart = (itemId) => {
+    $.ajax({
+        url: "/home/RemoveFromCart/" + itemId,
+        method: "DELETE",
+        dataType: "html",
+        success: (partial) => {
+            $("#cart").html(partial);
+        }
+    });
+}
+
+
+
 let getShoppingCart = () => {
     $.ajax({
         url: "/home/ShoppingCart",

@@ -1,5 +1,5 @@
 ﻿@model ResturantDemo.Models.MenuItem
 
 
-<li>@Model.Name : @Html.DisplayFor(item => item.Price, Model.Price)</li>
+<li>@Model.Name : @Html.DisplayFor(item => item.Price, Model.Price) <button class="btn btn-default" onclick="addToCart(@Model.Id)"><i class="glyphicon glyphicon-plus-sign"></i></button></li>
 

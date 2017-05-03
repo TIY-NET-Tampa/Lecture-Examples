@@ -1,16 +1,13 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace ResturantDemo
+namespace Homereview__Events
 {
     public class BundleConfig
     {
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundle/custom")
-                .Include("~/Scripts/custom.js", "~/Scripts/main.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
