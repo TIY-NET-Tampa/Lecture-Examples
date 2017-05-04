@@ -190,6 +190,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="CacheServices\CacheKeys.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\EventModelsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -200,15 +201,27 @@
     <Compile Include="Migrations\201705031356351_AddFirstModels.Designer.cs">
       <DependentUpon>201705031356351_AddFirstModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705041413495_AddedTicketsAndOrder.cs" />
+    <Compile Include="Migrations\201705041413495_AddedTicketsAndOrder.Designer.cs">
+      <DependentUpon>201705041413495_AddedTicketsAndOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705041558077_AddShoppingCartToDatabase.cs" />
+    <Compile Include="Migrations\201705041558077_AddShoppingCartToDatabase.Designer.cs">
+      <DependentUpon>201705041558077_AddShoppingCartToDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
+    <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\Venue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\HomePageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -230,6 +243,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -272,6 +286,9 @@
     <Content Include="Views\EventModels\Details.cshtml" />
     <Content Include="Views\EventModels\Edit.cshtml" />
     <Content Include="Views\EventModels\Index.cshtml" />
+    <Content Include="Views\Shared\_shoppingCart.cshtml" />
+    <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Checkout\Purchase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -294,6 +311,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705031356351_AddFirstModels.resx">
       <DependentUpon>201705031356351_AddFirstModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705041413495_AddedTicketsAndOrder.resx">
+      <DependentUpon>201705041413495_AddedTicketsAndOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705041558077_AddShoppingCartToDatabase.resx">
+      <DependentUpon>201705041558077_AddShoppingCartToDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
