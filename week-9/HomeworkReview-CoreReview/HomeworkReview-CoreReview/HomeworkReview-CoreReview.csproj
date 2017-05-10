@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\css\profile.css" />
+    <Content Include="wwwroot\images\223556.jpg" />
+    <Content Include="wwwroot\images\banner1.svg" />
+    <Content Include="wwwroot\images\banner2.svg" />
+    <Content Include="wwwroot\images\banner3.svg" />
+    <Content Include="wwwroot\images\banner4.svg" />
+    <Content Include="wwwroot\images\portfolio\cabin.png" />
+    <Content Include="wwwroot\images\portfolio\cake.png" />
+    <Content Include="wwwroot\images\portfolio\circus.png" />
+    <Content Include="wwwroot\images\portfolio\game.png" />
+    <Content Include="wwwroot\images\portfolio\safe.png" />
+    <Content Include="wwwroot\images\portfolio\submarine.png" />
+    <Content Include="wwwroot\images\profile.png" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\contact_me.js" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\jqBootstrapValidation.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
