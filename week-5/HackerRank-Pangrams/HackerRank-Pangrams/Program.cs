@@ -10,7 +10,7 @@ namespace HackerRank_Pangrams
     {
         static void Main(string[] args)
         {
-            var input = Console.ReadLine().Replace(" ", String.Empty);
+            var input = Console.ReadLine().ToLower().Replace(" ", String.Empty);
 
             var characters = new Dictionary<char, int>();
             foreach (var item in input)
